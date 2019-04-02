@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Fjalla+One|Fredericka+the+Great|Josefin+Sans|Kaushan+Script|Mrs+Sheppards|Open+Sans:700" rel="stylesheet">
+
+
+<link rel="stylesheet" type="text/css" href="index.css">
+
+
+
+</head>
+
+
+<body>
+
+  <div id="topNav" class="navigation">
+    <span id="closebtn" onclick="navToggle()">
+        <span class="line1"></span>
+        <span class="line2"></span>
+        <span class="line3"></span>
+    </span>
+    <div class="logo">
+
+
+
+  </div>
+
+  <ul class="menulist">
+    <li><a class="menuitems" href="about.html">about</a></li>
+    <li><a class="menuitems" href="timeline.html">timeline</a></li>
+    <li><a class="menuitems" href="gallery.html">gallery</a></li>
+    <li><a class="menuitems" href="mnight.html">disconnection</a></li>
+  </ul>
+  </div>
+
+  <div id="main">
+  </div>
+
+
+<div class="container">
+
+    <div class="other-content"> <p> <a href="timeline.html ">my first year at ucl</a> </p></div>
+
+    <div class="slide" style="background-image: url('images/portico.jpg');"></div>
+    <div class="slide" style="background-image: url('images/rd4.jpg');"></div>
+    <div class="slide" style="background-image: url('images/8.jpg');"></div>
+    <div class="slide" style="background-image: url('images/21.jpg');"></div>
+    <div class="slide" style="background-image: url('images/stf.jpg');"></div>
+    <div class="slide" style="background-image: url('images/xmas6.jpg');"></div>
+
+</div>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+
+
+    function cycleBackgrounds() {
+    	var index = 0;
+
+    	$imageEls = $('.container .slide'); // Get the images to be cycled.
+
+    	setInterval(function () {
+    		// Get the next index.  If at end, restart to the beginning.
+    		index = index + 1 < $imageEls.length ? index + 1 : 0;
+    		// Show the next image.
+    		$imageEls.eq(index).addClass('show');
+    		// Hide the previous image.
+    		$imageEls.eq(index - 1).removeClass('show');
+
+    	}, 2000);
+    };
+
+    // Document Ready.
+    $(function () {
+    	cycleBackgrounds();
+    });
+
+    </script>
+
+    <script>
+    var nav = document.getElementById("topNav");
+var main = document.getElementById("main");
+var menu = document.getElementsByClassName("menuitems");
+var close = document.getElementById("closebtn");
+
+//default to measure if/else from
+nav.style.height = "50px";
+main.style.marginTop = "50px";
+for (i = 0; i < menu.length; i++){menu[i].style.marginTop="100px";};
+
+close.addEventListener("click", function(){
+  var menuIcon = close.children;
+  for (i = 0; i < menuIcon.length; i++){
+  menuIcon[i].classList.toggle("active");
+  }
+});
+
+function navToggle() {
+	//to close
+	if (nav.style.height <= "275px") {
+	nav.style.height = "50px";
+	main.style.marginTop = "50px";
+
+    	var i = 0;
+    	for (i = 0; i < menu.length; i++){
+	menu[i].style.opacity="0.0";
+	menu[i].style.marginTop="100px";
+	};
+    	document.body.style.backgroundColor = "rgba(0,0,0,0.0)";
+
+	}
+	//to open
+	else if (nav.style.height <= "50px") {
+	nav.style.height = "275px";
+	main.style.marginTop = "275px";
+    	var i = 0;
+    	for (i = 0; i < menu.length; i++){
+	menu[i].style.opacity="1.0";
+	menu[i].style.marginTop="0px";
+	};
+    	document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+
+	}
+
+};
+</script>
+</body>
+</html>
